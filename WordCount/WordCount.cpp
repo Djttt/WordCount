@@ -9,9 +9,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {   
-    char buf[MAX_NUM];  /*缓冲区*/
-    FILE* fp;            /*文件指针*/
-    int len;             /*行字符个数*/
+	//缓冲区
+    char buf[MAX_NUM]; 
+	//文件指针
+    FILE* fp; 
+	//行字符个数
+    int len;             
 	int flag = 0;
 	int total = 0;
 	if (argc != 3) {
@@ -30,13 +33,16 @@ int main(int argc, char* argv[])
 			}
 			//文件读取结束或出错则退出
 			while (!feof(fp) && !ferror(fp)) {
-				fgets(buf, MAX_NUM, fp);//每次读取一行或者MAX_NUM个字符
+				//每次读取一行或者MAX_NUM个字符
+				fgets(buf, MAX_NUM, fp);
 				len = strlen(buf);
 				if (buf[len - 1] == '\n') {
-					buf[len - 1] = '\0';  //去掉换行符在输出
+					//去掉换行符在输出
+					buf[len - 1] = '\0'; 
 					len--;
 				}
-				if (len == 0) continue;	//消除空白行
+				//消除空白行
+				if (len == 0) continue;
 				total += len;
 			}
 			printf("文本中的字符数为：%d \n", total);
